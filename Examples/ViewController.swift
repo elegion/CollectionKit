@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         vm.handler = { [unowned self] in
 
         }
-        let header = CollectionHeaderFooterView<Header>(item: vm, kind: UICollectionElementKindSectionHeader)
+        let header = CollectionHeaderFooterView<Header>(item: vm, kind: UICollectionView.elementKindSectionHeader)
         header.onDisplay = {
             print("on displaaay")
         }
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Append section", style: .default, handler: { [unowned self] (_) in
             let section = CollectionSection()
             section.minimumInterItemSpacing = 2
-            section.insetForSection = UIEdgeInsetsMake(20, 20, 20, 20)
+            section.insetForSection = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
             section.lineSpacing = 1
             
             for _ in 0..<4 {
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Append 2 sections", style: .default, handler: { [unowned self] (_) in
             let section1 = CollectionSection()
             section1.minimumInterItemSpacing = 2
-            section1.insetForSection = UIEdgeInsetsMake(20, 20, 20, 20)
+            section1.insetForSection = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
             section1.lineSpacing = 1
             
             for _ in 0..<2 {
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
             
             let section2 = CollectionSection()
             section2.minimumInterItemSpacing = 2
-            section2.insetForSection = UIEdgeInsetsMake(20, 50, 20, 50)
+            section2.insetForSection = UIEdgeInsets.init(top: 20, left: 50, bottom: 20, right: 50)
             section2.lineSpacing = 10
             for _ in 0..<2 {
                 let row = CollectionItem<CollectionCell>(item: "2222222".uppercased())

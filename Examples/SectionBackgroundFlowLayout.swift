@@ -35,7 +35,7 @@ class SectionBackgroundFlowLayout: UICollectionViewFlowLayout {
             for attr in attributes {
                 // Look for the first item in a row
                 // You can also calculate it by item (remove the second check in the if below and change the tmpWidth and frame origin
-                if (attr.representedElementCategory == UICollectionElementCategory.cell && attr.frame.origin.x == self.sectionInset.left) {
+                if (attr.representedElementCategory == UICollectionView.ElementCategory.cell && attr.frame.origin.x == self.sectionInset.left) {
                     
                     // Create decoration attributes
                     if let decorationAttributes = layoutAttributesForDecorationView(ofKind: "sectionBackground", at: attr.indexPath) as? SCSBCollectionViewLayoutAttributes {
