@@ -37,9 +37,6 @@ class ViewController: UIViewController {
         section.lineSpacing = 2
         let vm = HeaderViewModel()
         vm.title = "Показать все"
-        vm.handler = { [unowned self] in
-
-        }
         let header = CollectionHeaderFooterView<Header>(item: vm, kind: UICollectionView.elementKindSectionHeader)
         header.onDisplay = {
             print("on displaaay")
