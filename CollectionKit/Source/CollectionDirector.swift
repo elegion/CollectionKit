@@ -314,7 +314,7 @@ extension CollectionDirector {
     }
     
     public func insert(section: AbstractCollectionSection, after afterSection: AbstractCollectionSection) {
-        guard let afterIndex = sections.firstIndex(where: { section == $0 }) else { return }
+        guard let afterIndex = sections.firstIndex(where: { afterSection == $0 }) else { return }
         sections.insert(section, at: afterIndex + 1)
         let update = SectionUpdate(index: afterIndex + 1, type: .insert)
         deferredUpdates.append(update)
