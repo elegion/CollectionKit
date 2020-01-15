@@ -214,21 +214,21 @@ extension CollectionDirector : UICollectionViewDelegateFlowLayout {
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = sections[indexPath.section]
         let item = section.item(for: indexPath.row)
-        var size = item.estimatedSize(boundingSize: collectionView.bounds.size)
-        size.width -= (collectionView.contentInset.left + collectionView.contentInset.right)
-        size.height -= (collectionView.contentInset.top + collectionView.contentInset.bottom)
+        var collectionViewSize = collectionView.bounds.size
         let inset = section.insetForSection
         if item.adjustsWidth {
-            let paddings = inset.left + inset.right
-            size.width -= paddings
+            let paddings = inset.left + inset.right + collectionView.contentInset.left + collectionView.contentInset.right
+            let width = collectionView.bounds.width - paddings
+            collectionViewSize.width = width
         }
         
         if item.adjustsHeight {
-            let paddings = inset.top + inset.bottom
-            size.width -= paddings
+            let paddings = inset.top + inset.bottom + collectionView.contentInset.top + collectionView.contentInset.bottom
+            let height = collectionView.bounds.height - paddings
+            collectionViewSize.height = height
         }
         
-        return size
+        return item.estimatedSize(boundingSize: collectionViewSize)
     }
     
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
