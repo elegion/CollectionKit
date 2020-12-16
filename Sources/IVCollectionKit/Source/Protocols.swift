@@ -31,7 +31,7 @@ public protocol ActionableCollectionItem {
 
 //MARK:- AbstractCollectionItem
 public protocol AbstractCollectionItem : AbstractCollectionReusableView, ActionableCollectionItem {
-    var reuseIdentifier: String { get }
+    var reuseIdentifier: String { get set }
     var identifier: String { get }
     var cellType: AnyClass { get }
     var adjustsWidth: Bool { get set }
@@ -44,7 +44,7 @@ public protocol AbstractCollectionItem : AbstractCollectionReusableView, Actiona
 
 //MARK:- AbstractCollectionReusableView
 public protocol AbstractCollectionReusableView {
-    var reuseIdentifier: String { get }
+    var reuseIdentifier: String { get set }
     var identifier: String { get }
     func configure(_: UICollectionReusableView)
     func estimatedSize(boundingSize: CGSize) -> CGSize
@@ -53,7 +53,7 @@ public protocol AbstractCollectionReusableView {
 
 //MARK:- AbstractCollectionHeaderFooterItem
 public protocol AbstractCollectionHeaderFooterItem : AbstractCollectionReusableView {
-    var reuseIdentifier: String { get }
+    var reuseIdentifier: String { get set }
     var identifier: String { get }
     var viewType: AnyClass { get }
     var kind: String { get }
