@@ -33,7 +33,7 @@ open class CollectionSection : AbstractCollectionSection {
     }
     
     open func item(for index: Int) -> AbstractCollectionItem? {
-        if items.count >= index {
+        if index >= items.count {
             return nil
         }
         
