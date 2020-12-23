@@ -252,14 +252,17 @@ extension CollectionDirector: UICollectionViewDataSource {
     open func collectionView(_ collectionView: UICollectionView,
                              cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let item = section(for: indexPath.section).item(for: indexPath.row)
-        if shouldUseAutomaticViewRegistration {
-            viewsRegisterer.registerCellIfNeeded(reuseIdentifier: item.reuseIdentifier, cellClass: item.cellType)
+        if let item = section(for: indexPath.section).item(for: indexPath.row) {
+            if shouldUseAutomaticViewRegistration {
+                viewsRegisterer.registerCellIfNeeded(reuseIdentifier: item.reuseIdentifier, cellClass: item.cellType)
+            }
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
+            item.configure(cell)
+            return cell
+        } else {
+            fatalError()
         }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.reuseIdentifier, for: indexPath)
-        item.configure(cell)
-        return cell
     }
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
